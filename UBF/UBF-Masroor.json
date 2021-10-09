@@ -1,0 +1,692 @@
+{
+  "ModelName": "UBF-Masroor",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Oct 06, 2021, 10:16 PM",
+    "DateLastModified": "Oct 08, 2021, 03:39 PM",
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "recipient",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "recipient_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "fullName",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "phoneNo",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "email",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "dob",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gender",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "ssn",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "needscore",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "document_details",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "home_details",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "restaurants",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "ethnicity",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "recipient_id": {
+            "S": "1"
+          },
+          "fullName": {
+            "S": "Kanwal"
+          },
+          "phoneNo": {
+            "S": "0234"
+          },
+          "email": {
+            "S": "kanwal@hauraki.us"
+          },
+          "dob": {
+            "S": "02-96"
+          },
+          "gender": {
+            "S": "female"
+          },
+          "ssn": {
+            "S": "1234"
+          },
+          "needscore": {
+            "N": "7"
+          },
+          "document_details": {
+            "M": {
+              "w2URL": "s3://form/w2.pdf",
+              "1040URL": "s3://form/1040.pdf"
+            }
+          },
+          "home_details": {
+            "M": {
+              "Home address": "BUET, Dhaka",
+              "Country": "Bangladesh",
+              "Number_of_people": "2",
+              "Household_details": {
+                "Household_member": "Moazzem",
+                "Relationship": "Father",
+                "dob": "02/08/1996"
+              }
+            }
+          },
+          "restaurants": {
+            "L": [
+              {
+                "name": "KFC"
+              }
+            ]
+          },
+          "ethnicity": {
+            "S": "european"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "donor",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "donor_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "fullName",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "phoneNo",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "email",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "dob",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gender",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "donation_preferance",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "payment_details",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "ethnicity",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "donor_id": {
+            "S": "1"
+          },
+          "fullName": {
+            "S": "Kanwal"
+          },
+          "phoneNo": {
+            "S": "0450"
+          },
+          "email": {
+            "S": "kanwal@hauraki.us"
+          },
+          "dob": {
+            "S": "02-08"
+          },
+          "gender": {
+            "S": "female"
+          },
+          "donation_preferance": {
+            "L": [
+              {
+                "donationCause": "African American",
+                "donationFrequency": "Give once",
+                "donationAmount": 100,
+                "causeShare": 80
+              },
+              {
+                "donationCause": "Asian American",
+                "donationFrequency": "Monthly",
+                "donationAmount": 100,
+                "causeShare": 90
+              }
+            ]
+          },
+          "payment_details": {
+            "L": [
+              {
+                "cardName": "Masroor Hossain",
+                "cardNumber": "xxxx xxxx xxxx 1234",
+                "cardExpiry": "05/25",
+                "cardCVV": "485",
+                "cardEmail": "masroor@hauraki.us"
+              }
+            ]
+          },
+          "ethnicity": {
+            "S": "African"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "restaurant",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "restaurant_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "restaurant_name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "restaurant_coordinates",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "restaurant_location",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "restaurant_id": {
+            "S": "1"
+          },
+          "restaurant_name": {
+            "S": "The Alcove"
+          },
+          "restaurant_coordinates": {
+            "L": [
+              1,
+              2
+            ]
+          },
+          "restaurant_location": {
+            "S": "NY"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "meal",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "restaurant_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "meal_name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "total_number_of_meals_available",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "meal_availability",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "meal_rating",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "restaurant_id": {
+            "S": "1"
+          },
+          "meal_name": {
+            "S": "hamburger"
+          },
+          "total_number_of_meals_available": {
+            "S": "3"
+          },
+          "meal_availability": {
+            "S": "3"
+          },
+          "meal_rating": {
+            "S": "4.8"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "transaction",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "donor_id",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "transaction_time",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "amount",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "receiver",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "donor_id": {
+            "S": "1"
+          },
+          "transaction_time": {
+            "S": "2130#"
+          },
+          "amount": {
+            "S": "$10"
+          },
+          "receiver": {
+            "S": "Jui"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "order",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "order_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "recipient_id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "meals",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "food_price",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "restaurants",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "recipient_meal_ordered",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "recipient_id",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "order_id": {
+            "S": "A"
+          },
+          "recipient_id": {
+            "S": "1"
+          },
+          "meals": {
+            "L": [
+              {
+                "foodname": "Chicken Fry"
+              },
+              {
+                "foodname": "Chicken burger"
+              },
+              {
+                "foodname": "Chicken nugget"
+              }
+            ]
+          },
+          "food_price": {
+            "L": [
+              {
+                "foodname": "Chicken Fry",
+                "price": "11.98"
+              },
+              {
+                "foodname": "Chicken burger",
+                "price": "12"
+              },
+              {
+                "foodname": "Chicken nugget",
+                "price": "3"
+              }
+            ]
+          },
+          "restaurants": {
+            "S": "Kfc"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "ratings",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "restaurant_id",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "recipient_id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "meal_rating",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "restaurant_rating",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "recipient_rating_restaurant_meal",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "recipient_id",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "restaurant_id": {
+            "S": "1"
+          },
+          "recipient_id": {
+            "S": "1"
+          },
+          "meal_rating": {
+            "S": "4.3"
+          },
+          "restaurant_rating": {
+            "S": "5"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}
